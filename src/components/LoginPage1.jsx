@@ -44,7 +44,7 @@ export default function Loginpage() {
   }
   return (
     <>
-      <div className="w-full flex justify-center items-center h-[100vh] overflow-x-hidden whole1  sm:bg-gradient-lighten sm:bg-blend-lighten relative z-10">
+      <div className="w-full flex justify-center items-center h-[100vh] overflow-x-hidden  sm:bg-gradient-lighten sm:bg-blend-lighten relative z-10">
         <div className="bg-image-7  absolute h-full w-full top-0 blur-[2px]   sm:hidden "></div>
         <div className="sm:w-[500px] sm:flex  rounded-tl-[180px] rounded-tr-[15px] flex-col align-middle sm:rounded-[50px] p-[15px] pl-[25px] pr-[25px] bg-white absolute sm:top-[20%] sm:bottom-auto sm:right-auto bottom-0  z-12 shadow-lg loginbox ">
           <div className="bg-cover bg-center sm:bg-image-1 absolute  w-[200px] h-[120px] top-[200px] left-[-160px] -rotate-[23deg] inset-0 -z-[1] blur-[1px]"></div>

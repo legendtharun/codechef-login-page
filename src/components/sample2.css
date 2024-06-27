@@ -4,8 +4,3 @@
 #firstname,#secondname{
     padding-left: 10px;
 }
-@media screen and (max-width:640px) {
-    .whole{
-        height: 110vh;
-    }
-}
