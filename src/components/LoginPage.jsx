@@ -250,7 +250,10 @@ export default function Loginpage() {
           <div className="p-3 pl-[25px] pr-[25px] w-full">
             <button
               className="bg-blue-500 text-white rounded-3xl p-2 w-full hover:bg-blue-400 hover:-translate-y-1 font-bold text-2xl"
-              onClick={()=>{window.location.reload()}}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href='https://legendtharun.github.io/codechef-login-page/';
+                }}
             >
               Sign Up
             </button>
