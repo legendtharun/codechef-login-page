@@ -25,17 +25,17 @@
 #firstname,#secondname{
     padding-left: 10px;
 }
+/* html, body, #root {
+    height: 100%
+  } */
 @media screen and (max-width:640px) {
     .loginbox{
         width: 100%;
-        bottom: 0;
-    right: 0;
-        padding-bottom: 20%;
-    
+        
     }
-    .whole{
+    /* .whole{
         height: 110vh;
-    }
+    } */
     
     
 }

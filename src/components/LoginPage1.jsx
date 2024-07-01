@@ -10,43 +10,47 @@ export default function Loginpage() {
   const [emailvalid, setemailvalid] = useState({
     bg: "border-gray-500",
     msg: "",
+     msgcolor:"",focuscolor:"focus:border-blue-500 focus:ring focus:ring-blue-200"
   })
   
   const [passvalid, setpassvalid] = useState({
     bg: "border-gray-500",
     msg: "",
+    msgcolor:"",focuscolor:"focus:border-blue-500 focus:ring focus:ring-blue-200"
   })
-  function Check() {
-    
+  
+  
+  const emailChange=()=>{
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (document.getElementById("email").value === "") {
-      setemailvalid({ bg: "border-red-500", msg: "Email is required!!" })
+    let email_details = document.getElementById("email").value
+    if (!re.test(String(email_details).toLowerCase())) {
+      setemailvalid({ bg: "border-red-500", msg: "Email is invalid!!" ,msgcolor:"text-red-500",focuscolor:"focus:border-red-500 focus:ring focus:ring-red-200"})
     } else {
-      let email_details = document.getElementById("email").value
-      if (!re.test(String(email_details).toLowerCase())) {
-        setemailvalid({ bg: "border-red-500", msg: "Email is invalid!!" })
-      } else {
-        setemailvalid({ bg: "border-gray-500", msg: "" })
-      }
+      setemailvalid({ bg: "border-green-500", msg: "Email is valid.", msgcolor:"text-green-500",focuscolor:"focus:border-green-500 focus:ring focus:ring-green-200" })
     }
-    
-    
-    if (document.getElementById("pass").value === "") {
-      setpassvalid({ bg: "border-red-500", msg: "Password is required" })
-    } 
-       else {
-        setpassvalid({
-          bg: "border-red-500",
-          msg: "Password is invalid. (Note: It should be atleast 8 characters in length & should contain atleast one special character)",
-        })
-      }
-    
   }
+
+  const passChange=()=>{
+    let passvalue= document.getElementById("pass").value
+   
+   if (passvalue===""){
+    setpassvalid({
+      bg: "border-red-500",
+      msg: "Password is required!!",
+      msgcolor:"text-red-500",focuscolor:"focus:border-red-500 focus:ring focus:ring-red-200" 
+    })
+   }
+    
+  else{
+    setpassvalid({ bg: "border-green-500", msg: "Password is given." ,msgcolor:"text-green-500",focuscolor:"focus:border-green-500 focus:ring focus:ring-green-200"})
+  }
+  }
+  
   return (
     <>
-      <div className="w-full flex justify-center items-center h-[100vh] overflow-x-hidden  sm:bg-gradient-lighten sm:bg-blend-lighten relative z-10">
+      <div className="w-full flex justify-center items-center  h-full overflow-x-hidden  sm:bg-gradient-lighten sm:bg-blend-lighten relative z-10 sm:pb-[5%] pt-[20vh] sm:pt-[5%] pb-0">
         <div className="bg-image-7  absolute h-full w-full top-0 blur-[2px]   sm:hidden "></div>
-        <div className="sm:w-[500px] sm:flex  rounded-tl-[180px] rounded-tr-[15px] flex-col align-middle sm:rounded-[50px] p-[15px] pl-[25px] pr-[25px] bg-white absolute sm:top-[20%] sm:bottom-auto sm:right-auto bottom-0  z-12 shadow-lg loginbox ">
+        <div className="sm:w-[500px] sm:flex  rounded-tl-[180px] rounded-tr-[15px] flex-col align-middle sm:rounded-[50px] p-[15px] pl-[25px] pr-[25px] bg-white relative z-12 shadow-lg  h-[80vh] sm:h-auto loginbox">
           <div className="bg-cover bg-center sm:bg-image-1 absolute  w-[200px] h-[120px] top-[200px] left-[-160px] -rotate-[23deg] inset-0 -z-[1] blur-[1px]"></div>
           <div className="bg-cover bg-center sm:bg-image-2 absolute  w-[200px] h-[120px] top-[420px]  left-[480px] rotate-[40deg] inset-0 -z-[1] blur-[1.5px] scale-[130%] laptop "></div>
           <div className="bg-cover bg-center sm:bg-image-3 absolute  w-[160px] h-[160px] top-[200px] left-[475px] rotate-[40deg] inset-0 -z-[1] blur-[1.5px] scale-[80%] laptopguy"></div>
@@ -71,13 +75,14 @@ export default function Loginpage() {
                 placeholder="some.mail@university.com"
                 id="email"
                 className={
-                  "p-1 m-2 border-2 border-spacing-1  rounded-lg mt-0 ml-6 mr-6 w-[89.5%] focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200" +
+                  "p-1 m-2 border-2 border-spacing-1  rounded-lg mt-0 ml-6 mr-6 w-[89.5%] focus:outline-none" +
                   " " +
-                  `${emailvalid.bg}`
+                   `${emailvalid.bg+" "+emailvalid.focuscolor}`
                 }
+                onChange={emailChange}
               ></input>
               <label
-                className=" text-sm font-light  grid-col-1 ml-6 text-red-500"
+                className={" text-sm font-light  grid-col-1 ml-6 "+`${emailvalid.msgcolor}`}
                 style={{}}
                 id="emailwarning"
               >
@@ -97,15 +102,16 @@ export default function Loginpage() {
                 placeholder="********"
                 id="pass"
                 className={
-                  "p-1 m-2 border-2 border-spacing-1  rounded-lg mt-0 ml-6 mr-6 w-[89.5%] focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200" +
-                  " " +
-                  `${passvalid.bg}`
+                  "p-1 m-2 border-2 border-spacing-1  rounded-lg mt-0 ml-6 mr-6 w-[89.5%] focus:outline-none" +
+                  " "  +
+                  `${passvalid.bg}`+" "+`${passvalid.focuscolor}`
                 }
+                onChange={passChange}
               ></input>
             </div>
             <div className="ml-6 p-0.5 w-[89.5%]">
             <label
-                className=" text-sm font-light  grid-col-1  text-red-500 text-wrap"
+                className={" text-sm font-light  grid-col-1 text-wrap "+`${passvalid.msgcolor}`}
                 style={{}}
                 id="passwarning"
               >
@@ -114,13 +120,13 @@ export default function Loginpage() {
           </div></div>
           
           <div className="flex align-middle ml-6">
-             <label className="font-normal text-blue-500 p-1 flex align-middle justify-center"><input type="checkbox" className="mt-0.5"/> <span className="pl-1"> Remember Me</span></label>
+             <label className="font-normal text-blue-500 p-1 flex align-middle justify-center"><input type="checkbox" className=""/> <span className="pl-1"> Remember Me</span></label>
              <span className="ml-auto p-1 text-blue-500 hover:text-blue-400 cursor-pointer mr-5">Forgot Password?</span>
             </div>
           <div className="p-3 pl-[25px] pr-[25px] w-full">
             <button
               className="bg-blue-500 text-white rounded-3xl p-2 w-full hover:bg-blue-400 hover:-translate-y-1 font-bold text-2xl"
-              onClick={Check}
+              onClick={()=>{window.location.reload()}}
             >
               Login
             </button>
